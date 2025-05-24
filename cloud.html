@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing for Data Analysis Hub</title>
+    <meta name="description" content="Master Cloud Computing for Data Analysis - ITCS 6190/8190 Course Hub">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e89;
+            --accent-color: #1a659e;
+            --dark-color: #1b263b;
+            --light-color: #f7f9fc;
+            --success-color: #06d6a0;
+            --warning-color: #ffd23f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header with animated background */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            font-weight: 300;
+        }
+        
+        /* Cloud Architecture Section */
+        .cloud-architecture {
+            background: white;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .arch-diagram {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .cloud-svg {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(27, 38, 59, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-links li a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        /* Course Schedule Grid */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .week-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .week-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .week-number {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .week-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .week-topics {
+            margin-bottom: 1.5rem;
+        }
+        
+        .week-topics h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .week-topics ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .week-topics li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #64748b;
+        }
+        
+        .week-topics li::before {
+            content: '☁️';
+            position: absolute;
+            left: 0;
+        }
+        
+        .assignments {
+            background: rgba(6, 214, 160, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .assignments h5 {
+            color: var(--success-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* Architecture Cards */
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .arch-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .arch-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .arch-header {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .arch-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .arch-body {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        /* Certifications Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .cert-card {
+            background: linear-gradient(145deg, #fff7ed, #fed7aa);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .cert-card:hover {
+            border-color: var(--warning-color);
+            transform: translateY(-5px);
+        }
+        
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cert-title {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .cert-link {
+            display: inline-block;
+            background: var(--warning-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cert-link:hover {
+            background: #f59e0b;
+            transform: scale(1.05);
+        }
+        
+        /* AWS Services Button */
+        .aws-services-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9500, #ff6b35);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 2rem auto;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+        
+        .aws-services-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                position: relative;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: var(--dark-color);
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                padding: 0.5rem 1rem;
+                display: block;
+            }
+            
+            .schedule-grid, .arch-grid, .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .week-card, .arch-card, .cert-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">☁️ Cloud Computing Hub</div>
+            <div class="tagline">Master Cloud Computing for Data Analysis</div>
+        </div>
+    </header>
+    
+    <!-- Cloud Architecture Hero Section -->
+    <section class="cloud-architecture">
+        <div class="container">
+            <h2 class="section-title">Cloud Computing Architecture Overview</h2>
+            <div class="arch-diagram">
+                <svg class="cloud-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cloud Infrastructure -->
+                    <defs>
+                        <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="serverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+                        </linearGradient>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#374151"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- Main Cloud -->
+                    <ellipse cx="400" cy="150" rx="300" ry="80" fill="url(#cloudGrad)" opacity="0.2"/>
+                    <ellipse cx="350" cy="120" rx="80" ry="40" fill="url(#cloudGrad)" opacity="0.6"/>
+                    <ellipse cx="450" cy="120" rx="100" ry="50" fill="url(#cloudGrad)" opacity="0.6"/>
+                    <ellipse cx="400" cy="140" rx="120" ry="30" fill="url(#cloudGrad)" opacity="0.8"/>
+                    
+                    <!-- Data Sources -->
+                    <rect x="50" y="300" width="80" height="60" rx="8" fill="#10b981"/>
+                    <text x="90" y="335" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Data Sources</text>
+                    
+                    <!-- Processing Layer -->
+                    <rect x="200" y="250" width="100" height="40" rx="8" fill="url(#serverGrad)"/>
+                    <text x="250" y="275" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Hadoop</text>
+                    
+                    <rect x="200" y="300" width="100" height="40" rx="8" fill="url(#serverGrad)"/>
+                    <text x="250" y="325" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Spark</text>
+                    
+                    <!-- Cloud Services -->
+                    <rect x="400" y="250" width="80" height="35" rx="8" fill="#3b82f6"/>
+                    <text x="440" y="272" text-anchor="middle" fill="white" font-size="10" font-weight="bold">AWS EC2</text>
+                    
+                    <rect x="400" y="290" width="80" height="35" rx="8" fill="#3b82f6"/>
+                    <text x="440" y="312" text-anchor="middle" fill="white" font-size="10" font-weight="bold">AWS S3</text>
+                    
+                    <rect x="490" y="250" width="80" height="35" rx="8" fill="#3b82f6"/>
+                    <text x="530" y="272" text-anchor="middle" fill="white" font-size="10" font-weight="bold">EMR</text>
+                    
+                    <rect x="490" y="290" width="80" height="35" rx="8" fill="#3b82f6"/>
+                    <text x="530" y="312" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Redshift</text>
+                    
+                    <!-- Analytics Layer -->
+                    <rect x="620" y="270" width="100" height="50" rx="8" fill="#8b5cf6"/>
+                    <text x="670" y="300" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ML Analytics</text>
+                    
+                    <!-- Arrows -->
+                    <path d="M 130 330 L 190 280" stroke="#374151" stroke-width="3" marker-end="url(#arrowhead)"/>
+                    <path d="M 300 270 L 390 270" stroke="#374151" stroke-width="3" marker-end="url(#arrowhead)"/>
+                    <path d="M 570 270 L 610 290" stroke="#374151" stroke-width="3" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Labels -->
+                    <text x="400" y="30" text-anchor="middle" fill="#1f2937" font-size="24" font-weight="bold">Cloud Data Analytics Pipeline</text>
+                    <text x="400" y="50" text-anchor="middle" fill="#6b7280" font-size="14">Ingestion → Processing → Storage → Analytics</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Navigation Section -->
+    <nav>
+        <div class="container nav-container">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+               <!--<li><a href="#schedule">Course Schedule</a></li> --> 
+                <li><a href="#architectures">Architectures</a></li>
+                <li><a href="#certifications">AWS Certifications</a></li>
+                <li><a href="#aws-services">AWS Services</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Course Schedule Section 
+    <section id="schedule" class="section">
+        <div class="container">
+            <h2 class="section-title">Fall 2024 Course Schedule</h2>
+            <div class="schedule-grid">
+                 Week 1-2 -->
+                <!--<div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 1-2</span>
+                        <span class="week-date">Aug 20-27</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>Course Introduction & Virtualization</h4>
+                        <ul>
+                            <li>Course Overview & Objectives</li>
+                            <li>Virtualization Concepts</li>
+                            <li>Containerization with Docker</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Hands-on Activities</h5>
+                        <p>Hands-on #1: Virtualization and Containerization</p>
+                    </div>
+                </div>
+                
+                Week 3-4 -->
+                <!-- <div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 3-4</span>
+                        <span class="week-date">Sep 3-10</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>Cloud Computing & Big Data Foundations</h4>
+                        <ul>
+                            <li>Cloud Computing Models (IaaS, PaaS, SaaS)</li>
+                            <li>Big Data Analytics Introduction</li>
+                            <li>Hadoop Ecosystem Overview</li>
+                            <li>HDFS Architecture & MapReduce</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Deliverables</h5>
+                        <p>Assignment #1 Available<br>
+                        Course Project #1: Hadoop - SoW Available</p>
+                    </div>
+                </div>
+                
+                Week 5-6 -->
+                 <!--<div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 5-6</span>
+                        <span class="week-date">Sep 17-24</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>MapReduce & Python Integration</h4>
+                        <ul>
+                            <li>MapReduce Programming Model</li>
+                            <li>Hands-on MapReduce Development</li>
+                            <li>Big Data with Python and Hadoop</li>
+                            <li>Python-Hadoop Integration</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Due & Available</h5>
+                        <p>Assignment #2 Available<br>
+                        Assignment #1: HDFS and MapReduce Due</p>
+                    </div>
+                </div>
+                
+                 Week 7-8 -->
+                <!--<div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 7-8</span>
+                        <span class="week-date">Oct 1-8</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>Apache Spark Introduction</h4>
+                        <ul>
+                            <li>Big Data Analytics with Spark</li>
+                            <li>Spark Architecture & RDDs</li>
+                            <li>Spark Structured APIs</li>
+                            <li>Midterm Exam Preparation</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Major Milestones</h5>
+                        <p>Assignment #3 Available<br>
+                        Assignment #2 Due<br>
+                        Course Project #1 Due (Oct 12)</p>
+                    </div>
+                </div>
+                
+                 Week 9-10 -->
+                <!--<div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 9-10</span>
+                        <span class="week-date">Oct 22-29</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>Spark SQL & DataFrames</h4>
+                        <ul>
+                            <li>Spark SQL Deep Dive</li>
+                            <li>DataFrames & Datasets</li>
+                            <li>Streaming Analytics with Spark</li>
+                            <li>Real-time Data Processing</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Deliverables</h5>
+                        <p>Assignment #4 Available<br>
+                        Assignment #3 Due<br>
+                        Course Project #2: Spark - SoW Available</p>
+                    </div>
+                </div>
+                
+                Week 11-12 -->
+                <!-- <div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 11-12</span>
+                        <span class="week-date">Nov 5-12</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>Machine Learning & AWS Introduction</h4>
+                        <ul>
+                            <li>Machine Learning with MLlib</li>
+                            <li>ML Pipeline Development</li>
+                            <li>AWS Core Services</li>
+                            <li>EC2, S3, and IAM</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Deliverables</h5>
+                        <p>Assignment #5 Available<br>
+                        Assignment #4: Spark SQL Due</p>
+                    </div>
+                </div>
+                
+                 Week 13-15 -->
+                <!--<div class="week-card loading">
+                    <div class="week-header">
+                        <span class="week-number">Week 13-15</span>
+                        <span class="week-date">Nov 19-Dec 3</span>
+                    </div>
+                    <div class="week-topics">
+                        <h4>Advanced AWS & Project Work</h4>
+                        <ul>
+                            <li>Advanced AWS Services</li>
+                            <li>EMR, Redshift, and Analytics Services</li>
+                            <li>Course Project #2 Development</li>
+                            <li>Final Project Presentations</li>
+                        </ul>
+                    </div>
+                    <div class="assignments">
+                        <h5>📝 Final Deliverables</h5>
+                        <p>Assignment #5 Due<br>
+                        Course Project #2: Spark Due (Dec 4)<br>
+                        Final Exam (Dec 10)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    
+    <!-- Architecture Section -->
+    <section id="architectures" class="section">
+        <div class="container">
+            <h2 class="section-title">Big Data Architectures</h2>
+            <div class="arch-grid">
+                <!-- Hadoop Architecture -->
+                <div class="arch-card loading">
+                    <div class="arch-header">
+                        <h3 class="arch-title">🐘 Hadoop Architecture</h3>
+                        <p>Distributed Storage & Processing</p>
+                    </div>
+                    <div class="arch-body">
+                        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- HDFS Layer -->
+                            <rect x="20" y="140" width="260" height="40" rx="8" fill="#4ade80" opacity="0.8"/>
+                            <text x="150" y="165" text-anchor="middle" fill="white" font-size="12" font-weight="bold">HDFS (Distributed Storage)</text>
+                            
+                            <!-- MapReduce Layer -->
+                            <rect x="20" y="90" width="120" height="35" rx="6" fill="#f59e0b"/>
+                            <text x="80" y="112" text-anchor="middle" fill="white" font-size="10" font-weight="bold">MapReduce</text>
+                            
+                            <!-- YARN Layer -->
+                            <rect x="160" y="90" width="120" height="35" rx="6" fill="#8b5cf6"/>
+                            <text x="220" y="112" text-anchor="middle" fill="white" font-size="10" font-weight="bold">YARN</text>
+                            
+                            <!-- Applications -->
+                            <rect x="50" y="40" width="60" height="25" rx="4" fill="#ef4444"/>
+                            <text x="80" y="57" text-anchor="middle" fill="white" font-size="8">Hive</text>
+                            
+                            <rect x="120" y="40" width="60" height="25" rx="4" fill="#06b6d4"/>
+                            <text x="150" y="57" text-anchor="middle" fill="white" font-size="8">Pig</text>
+                            
+                            <rect x="190" y="40" width="60" height="25" rx="4" fill="#10b981"/>
+                            <text x="220" y="57" text-anchor="middle" fill="white" font-size="8">HBase</text>
+                            
+                            <!-- Title -->
+                            <text x="150" y="20" text-anchor="middle" fill="#374151" font-size="14" font-weight="bold">Hadoop Ecosystem</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Spark Architecture -->
+                <div class="arch-card loading">
+                    <div class="arch-header">
+                        <h3 class="arch-title">⚡ Apache Spark Architecture</h3>
+                        <p>Unified Analytics Engine</p>
+                    </div>
+                    <div class="arch-body">
+                        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Driver Program -->
+                            <rect x="20" y="30" width="80" height="50" rx="8" fill="#ff6b35"/>
+                            <text x="60" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Driver</text>
+                            <text x="60" y="65" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Program</text>
+                            
+                            <!-- Cluster Manager -->
+                            <rect x="120" y="30" width="80" height="50" rx="8" fill="#3b82f6"/>
+                            <text x="160" y="50" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Cluster</text>
+                            <text x="160" y="65" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Manager</text>
+                            
+                            <!-- Worker Nodes -->
+                            <rect x="220" y="30" width="60" height="35" rx="6" fill="#10b981"/>
+                            <text x="250" y="52" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Worker 1</text>
+                            
+                            <rect x="220" y="75" width="60" height="35" rx="6" fill="#10b981"/>
+                            <text x="250" y="97" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Worker 2</text>
+                            
+                            <!-- Spark Components -->
+                            <rect x="20" y="120" width="60" height="25" rx="4" fill="#8b5cf6"/>
+                            <text x="50" y="137" text-anchor="middle" fill="white" font-size="8">Spark SQL</text>
+                            
+                            <rect x="90" y="120" width="60" height="25" rx="4" fill="#f59e0b"/>
+                            <text x="120" y="137" text-anchor="middle" fill="white" font-size="8">MLlib</text>
+                            
+                            <rect x="160" y="120" width="60" height="25" rx="4" fill="#ef4444"/>
+                            <text x="190" y="137" text-anchor="middle" fill="white" font-size="8">GraphX</text>
+                            
+                            <rect x="230" y="120" width="60" height="25" rx="4" fill="#06b6d4"/>
+                            <text x="260" y="137" text-anchor="middle" fill="white" font-size="8">Streaming</text>
+                            
+                            <!-- Core -->
+                            <rect x="100" y="155" width="100" height="25" rx="4" fill="#374151"/>
+                            <text x="150" y="172" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Spark Core (RDDs)</text>
+                            
+                            <!-- Title -->
+                            <text x="150" y="20" text-anchor="middle" fill="#374151" font-size="14" font-weight="bold">Spark Architecture</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Hive Architecture -->
+                <div class="arch-card loading">
+                    <div class="arch-header">
+                        <h3 class="arch-title">🐝 Apache Hive Architecture</h3>
+                        <p>Data Warehouse Software</p>
+                    </div>
+                    <div class="arch-body">
+                        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- User Interface -->
+                            <rect x="50" y="20" width="200" height="25" rx="4" fill="#3b82f6"/>
+                            <text x="150" y="37" text-anchor="middle" fill="white" font-size="10" font-weight="bold">User Interface (CLI, Web UI, JDBC)</text>
+                            
+                            <!-- Hive Services -->
+                            <rect x="20" y="60" width="80" height="30" rx="6" fill="#f59e0b"/>
+                            <text x="60" y="80" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Driver</text>
+                            
+                            <rect x="110" y="60" width="80" height="30" rx="6" fill="#8b5cf6"/>
+                            <text x="150" y="80" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Compiler</text>
+                            
+                            <rect x="200" y="60" width="80" height="30" rx="6" fill="#10b981"/>
+                            <text x="240" y="80" text-anchor="middle" fill="white" font-size="9" font-weight="bold">Optimizer</text>
+                            
+                            <!-- Metastore -->
+                            <rect x="100" y="110" width="100" height="30" rx="6" fill="#ef4444"/>
+                            <text x="150" y="130" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Metastore</text>
+                            
+                            <!-- Execution Engine -->
+                            <rect x="50" y="155" width="200" height="25" rx="4" fill="#374151"/>
+                            <text x="150" y="172" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Execution Engine (MapReduce/Spark)</text>
+                            
+                            <!-- Title -->
+                            <text x="150" y="15" text-anchor="middle" fill="#374151" font-size="14" font-weight="bold">Hive Architecture</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AWS Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">AWS Free Certifications & Learning Paths</h2>
+            <div class="cert-grid">
+                <!-- AWS Cloud Practitioner -->
+                <div class="cert-card loading">
+                    <div class="cert-icon">☁️</div>
+                    <h3 class="cert-title">AWS Cloud Practitioner Essentials</h3>
+                    <p>Foundational understanding of AWS Cloud concepts, services, and terminology.</p>
+                    <a href="https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/" class="cert-link" target="_blank" rel="noopener">Start Learning</a>
+                </div>
+                
+                <!-- AWS Technical Essentials -->
+                <div class="cert-card loading">
+                    <div class="cert-icon">🛠️</div>
+                    <h3 class="cert-title">AWS Technical Essentials</h3>
+                    <p>Introduction to AWS services, infrastructure, and basic architecture concepts.</p>
+                    <a href="https://explore.skillbuilder.aws/learn/courses/1851/aws-technical-essentials" class="cert-link" target="_blank" rel="noopener">Start Learning</a>
+                </div>
+                
+                <!-- AWS Data Analytics -->
+                <div class="cert-card loading">
+                    <div class="cert-icon">📊</div>
+                    <h3 class="cert-title">AWS Data Analytics Fundamentals</h3>
+                    <p>Learn data lakes, analytics services, and data processing on AWS.</p>
+                    <a href="https://explore.skillbuilder.aws/learn/courses/18440/fundamentals-of-analytics-on-aws-part-2" class="cert-link" target="_blank" rel="noopener">Start Learning</a>
+                </div>
+                
+                <!-- AWS Machine Learning -->
+                <div class="cert-card loading">
+                    <div class="cert-icon">🤖</div>
+                    <h3 class="cert-title">AWS Machine Learning Fundamentals</h3>
+                    <p>Introduction to machine learning concepts and AWS ML services.</p>
+                    <a href="https://aws.amazon.com/training/digital/aws-machine-learning-fundamentals/" class="cert-link" target="_blank" rel="noopener">Start Learning</a>
+                </div>
+                
+                <!-- AWS Big Data -->
+                <div class="cert-card loading">
+                    <div class="cert-icon">🗄️</div>
+                    <h3 class="cert-title">AWS Big Data Technology Fundamentals</h3>
+                    <p>Overview of big data technologies and services available on AWS.</p>
+                    <a href="https://aws.amazon.com/training/digital/aws-big-data-technology-fundamentals/" class="cert-link" target="_blank" rel="noopener">Start Learning</a>
+                </div>
+                
+                <!-- AWS Security -->
+                <div class="cert-card loading">
+                    <div class="cert-icon">🔒</div>
+                    <h3 class="cert-title">AWS Security Fundamentals</h3>
+                    <p>Learn AWS security concepts, services, and best practices.</p>
+                    <a href="https://aws.amazon.com/training/digital/aws-security-fundamentals/" class="cert-link" target="_blank" rel="noopener">Start Learning</a>
+                </div>
+            </div>
+            
+            <!-- AWS Services Button -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#aws-services" class="aws-services-btn">🚀 Explore AWS Services for Data Analysis</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AWS Services Section -->
+    <section id="aws-services" class="section">
+        <div class="container">
+            <h2 class="section-title">AWS Services for Data Analysis</h2>
+            
+            <!-- Compute Services -->
+            <div class="week-card loading">
+                <div class="week-header">
+                    <span class="week-number">💻</span>
+                    <span class="week-date">Compute Services</span>
+                </div>
+                <div class="week-topics">
+                    <h4>Processing & Computation</h4>
+                    <ul>
+                        <li><strong>Amazon EC2:</strong> Scalable virtual servers for data processing workloads</li>
+                        <li><strong>Amazon EMR:</strong> Managed Hadoop and Spark clusters for big data processing</li>
+                        <li><strong>AWS Lambda:</strong> Serverless computing for event-driven data processing</li>
+                        <li><strong>AWS Batch:</strong> Fully managed batch computing service</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Storage Services -->
+            <div class="week-card loading">
+                <div class="week-header">
+                    <span class="week-number">🗄️</span>
+                    <span class="week-date">Storage Services</span>
+                </div>
+                <div class="week-topics">
+                    <h4>Data Storage & Management</h4>
+                    <ul>
+                        <li><strong>Amazon S3:</strong> Object storage for data lakes and backups</li>
+                        <li><strong>Amazon EFS:</strong> Managed file system for EC2 instances</li>
+                        <li><strong>Amazon EBS:</strong> Block storage for EC2 instances</li>
+                        <li><strong>AWS Storage Gateway:</strong> Hybrid cloud storage service</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Database Services -->
+            <div class="week-card loading">
+                <div class="week-header">
+                    <span class="week-number">🗃️</span>
+                    <span class="week-date">Database Services</span>
+                </div>
+                <div class="week-topics">
+                    <h4>Managed Database Solutions</h4>
+                    <ul>
+                        <li><strong>Amazon Redshift:</strong> Cloud data warehouse for analytics</li>
+                        <li><strong>Amazon RDS:</strong> Managed relational database service</li>
+                        <li><strong>Amazon DynamoDB:</strong> NoSQL database for real-time applications</li>
+                        <li><strong>Amazon DocumentDB:</strong> MongoDB-compatible document database</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Analytics Services -->
+            <div class="week-card loading">
+                <div class="week-header">
+                    <span class="week-number">📊</span>
+                    <span class="week-date">Analytics Services</span>
+                </div>
+                <div class="week-topics">
+                    <h4>Data Analytics & Business Intelligence</h4>
+                    <ul>
+                        <li><strong>Amazon Athena:</strong> Serverless query service for S3 data</li>
+                        <li><strong>Amazon QuickSight:</strong> Business intelligence and visualization</li>
+                        <li><strong>AWS Glue:</strong> Managed ETL service for data preparation</li>
+                        <li><strong>Amazon Kinesis:</strong> Real-time data streaming and analytics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Machine Learning Services -->
+            <div class="week-card loading">
+                <div class="week-header">
+                    <span class="week-number">🤖</span>
+                    <span class="week-date">ML & AI Services</span>
+                </div>
+                <div class="week-topics">
+                    <h4>Machine Learning & Artificial Intelligence</h4>
+                    <ul>
+                        <li><strong>Amazon SageMaker:</strong> Fully managed ML platform</li>
+                        <li><strong>Amazon Comprehend:</strong> Natural language processing service</li>
+                        <li><strong>Amazon Rekognition:</strong> Image and video analysis</li>
+                        <li><strong>AWS DeepLens:</strong> Deep learning-enabled video camera</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Data Pipeline Services -->
+            <div class="week-card loading">
+                <div class="week-header">
+                    <span class="week-number">🔄</span>
+                    <span class="week-date">Data Pipeline Services</span>
+                </div>
+                <div class="week-topics">
+                    <h4>Data Movement & Integration</h4>
+                    <ul>
+                        <li><strong>AWS Data Pipeline:</strong> Data workflow orchestration service</li>
+                        <li><strong>AWS DataSync:</strong> Data transfer service</li>
+                        <li><strong>Amazon Kinesis Data Firehose:</strong> Data delivery service</li>
+                        <li><strong>AWS Database Migration Service:</strong> Database migration tool</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Architecture Example -->
+            <div class="arch-diagram" style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--dark-color);">Typical AWS Data Analytics Architecture</h3>
+                <svg class="cloud-svg" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                            <polygon points="0 0, 8 3, 0 6" fill="#374151"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- Data Sources -->
+                    <rect x="50" y="50" width="100" height="40" rx="8" fill="#10b981"/>
+                    <text x="100" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Data Sources</text>
+                    
+                    <!-- Ingestion Layer -->
+                    <rect x="200" y="30" width="80" height="30" rx="6" fill="#3b82f6"/>
+                    <text x="240" y="50" text-anchor="middle" fill="white" font-size="10">Kinesis</text>
+                    
+                    <rect x="200" y="80" width="80" height="30" rx="6" fill="#3b82f6"/>
+                    <text x="240" y="100" text-anchor="middle" fill="white" font-size="10">Data Pipeline</text>
+                    
+                    <!-- Storage Layer -->
+                    <rect x="330" y="30" width="80" height="30" rx="6" fill="#f59e0b"/>
+                    <text x="370" y="50" text-anchor="middle" fill="white" font-size="10">S3 Data Lake</text>
+                    
+                    <rect x="330" y="80" width="80" height="30" rx="6" fill="#f59e0b"/>
+                    <text x="370" y="100" text-anchor="middle" fill="white" font-size="10">Redshift</text>
+                    
+                    <!-- Processing Layer -->
+                    <rect x="460" y="30" width="80" height="30" rx="6" fill="#8b5cf6"/>
+                    <text x="500" y="50" text-anchor="middle" fill="white" font-size="10">EMR/Spark</text>
+                    
+                    <rect x="460" y="80" width="80" height="30" rx="6" fill="#8b5cf6"/>
+                    <text x="500" y="100" text-anchor="middle" fill="white" font-size="10">Glue ETL</text>
+                    
+                    <!-- Analytics Layer -->
+                    <rect x="590" y="30" width="80" height="30" rx="6" fill="#ef4444"/>
+                    <text x="630" y="50" text-anchor="middle" fill="white" font-size="10">Athena</text>
+                    
+                    <rect x="590" y="80" width="80" height="30" rx="6" fill="#ef4444"/>
+                    <text x="630" y="100" text-anchor="middle" fill="white" font-size="10">SageMaker</text>
+                    
+                    <!-- Visualization -->
+                    <rect x="720" y="50" width="100" height="40" rx="8" fill="#06b6d4"/>
+                    <text x="770" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">QuickSight</text>
+                    
+                    <!-- Flow Arrows -->
+                    <path d="M 150 70 L 190 55" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 150 70 L 190 95" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 280 45 L 320 45" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 280 95 L 320 95" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 410 45 L 450 45" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 410 95 L 450 95" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 540 45 L 580 45" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 540 95 L 580 95" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 670 70 L 710 70" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+                    
+                    <!-- Layer Labels -->
+                    <text x="100" y="140" text-anchor="middle" fill="#6b7280" font-size="12" font-weight="bold">Data Sources</text>
+                    <text x="240" y="140" text-anchor="middle" fill="#6b7280" font-size="12" font-weight="bold">Ingestion</text>
+                    <text x="370" y="140" text-anchor="middle" fill="#6b7280" font-size="12" font-weight="bold">Storage</text>
+                    <text x="500" y="140" text-anchor="middle" fill="#6b7280" font-size="12" font-weight="bold">Processing</text>
+                    <text x="630" y="140" text-anchor="middle" fill="#6b7280" font-size="12" font-weight="bold">Analytics</text>
+                    <text x="770" y="140" text-anchor="middle" fill="#6b7280" font-size="12" font-weight="bold">Visualization</text>
+                    
+                    <!-- Title -->
+                    <text x="450" y="20" text-anchor="middle" fill="#1f2937" font-size="16" font-weight="bold">AWS Data Analytics Pipeline</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-content">
+            <h3>🎓 Ready to Master Cloud Computing for Data Analysis?</h3>
+            <p>Explore the complete ecosystem of cloud technologies, big data processing, and advanced analytics</p>
+            <div style="margin: 2rem 0;">
+                <a href="#schedule" style="color: var(--primary-color); text-decoration: none; margin: 0 1rem;">Course Schedule</a>
+                <a href="#architectures" style="color: var(--primary-color); text-decoration: none; margin: 0 1rem;">Architectures</a>
+                <a href="#certifications" style="color: var(--primary-color); text-decoration: none; margin: 0 1rem;">Certifications</a>
+                <a href="#aws-services" style="color: var(--primary-color); text-decoration: none; margin: 0 1rem;">AWS Services</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.8;">&copy; Cloud Computing Hub. Empowering the next generation of data scientists and cloud engineers. All rights reserved. Nithya reddy Billa. </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Loading animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add stagger effect to cards in same section
+        document.querySelectorAll('.schedule-grid, .arch-grid, .cert-grid').forEach(grid => {
+            const cards = grid.querySelectorAll('.loading');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+
+        // Performance optimization: Reduce animations on low-end devices
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+            document.body.style.setProperty('--animation-duration', '0.3s');
+        }
+
+        // Add focus management for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
